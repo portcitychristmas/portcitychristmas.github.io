@@ -356,3 +356,5 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .same-day { color: #7ee2a8; }
 .same-day-check { margin: 0 0 18px; }
 @media (max-width: 767px) { .house-opts { grid-template-columns: 1fr; } }
+.social-link { display: inline-flex; align-items: center; gap: 6px; }
+.social-link svg { flex: none; }
