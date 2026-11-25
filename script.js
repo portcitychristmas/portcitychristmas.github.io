@@ -48,7 +48,7 @@
 
 // ---------- Price estimator ----------
 (function estimator() {
-  const MINIMUM = 150, MAX_COUNT = 20;
+  const MINIMUM = 200, MAX_COUNT = 20;
   const form = document.getElementById("estimator");
   if (!form) return;
   const total = document.getElementById("calc-total");
