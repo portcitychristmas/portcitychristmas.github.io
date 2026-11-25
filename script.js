@@ -94,11 +94,13 @@
     update();
   });
 
-  // "Book this" -> copy the selection into the quote form and jump there.
+  // "Book this" -> copy the selection into the quote form (on the quote page) and jump there.
   document.getElementById("book-btn").addEventListener("click", () => {
     const r = read();
     const summary = r.lines.join(", ") + (r.isCustom ? " (custom quote needed)" : " - estimate " + fmt(r.price));
-    document.getElementById("estimate").value = summary;
+    const field = document.getElementById("estimate");
+    if (!field) { window.location.href = "/quote/?est=" + encodeURIComponent(summary); return; }
+    field.value = summary;
     document.getElementById("quote").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     document.getElementById("name").focus({ preventScroll: true });
   });
@@ -115,6 +117,12 @@
   const copyBtn = document.getElementById("copy-msg");
   const required = [form.name, form.address];
   let lastMsg = "";
+
+  // Pre-fill from the estimator (?est=...) or a town page (?area=...).
+  const params = new URLSearchParams(location.search);
+  if (params.get("est")) form.estimate.value = params.get("est").slice(0, 300);
+  const area = params.get("area");
+  if (area && [...form.area.options].some(o => o.value === area)) form.area.value = area;
 
   function check(input) {
     const ok = input.value.trim() !== "";

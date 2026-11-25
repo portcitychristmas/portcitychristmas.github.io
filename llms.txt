@@ -52,4 +52,13 @@ Final price is confirmed after a photo or address check, usually within a day an
 
 ## Pages
 
-- [Home page](https://portcitychristmas.github.io/): full service details, pricing, estimator, service areas, reviews and FAQ
+- [Home](https://portcitychristmas.github.io/): overview, what's included, how it works, reviews
+- [Pricing and instant estimator](https://portcitychristmas.github.io/pricing/)
+- [Free quote](https://portcitychristmas.github.io/quote/): quote form, phone and text
+- [FAQ](https://portcitychristmas.github.io/faq/)
+- [Service areas](https://portcitychristmas.github.io/service-areas/)
+  - [Saint John](https://portcitychristmas.github.io/service-areas/saint-john/)
+  - [Rothesay](https://portcitychristmas.github.io/service-areas/rothesay/)
+  - [Quispamsis](https://portcitychristmas.github.io/service-areas/quispamsis/)
+  - [Hampton](https://portcitychristmas.github.io/service-areas/hampton/)
+  - [Grand Bay-Westfield](https://portcitychristmas.github.io/service-areas/grand-bay-westfield/)

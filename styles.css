@@ -273,6 +273,35 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .footer .logo { color: #fff; }
 .copyright { border-top: 1px solid rgba(255,255,255,.08); margin-top: 40px; padding-top: 20px; font-size: .85rem; }
 
+/* Inner pages (multi-page site) */
+.nav-links a[aria-current="page"] { color: var(--gold); }
+.page-hero {
+  position: relative; overflow: hidden; color: #fff;
+  background: radial-gradient(ellipse at 70% 20%, #1f3456 0%, var(--night) 60%);
+  padding: 44px 0 52px;
+}
+.page-hero .wrap { position: relative; }
+.page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; max-width: 18em; }
+.page-hero .hero-actions { margin-bottom: 0; }
+.crumbs { font-size: .9rem; color: #9aa6ba; margin-bottom: 18px; }
+.crumbs a { color: #cfd6e3; text-decoration: none; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs [aria-current] { color: #fff; }
+a.area { display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: border-color var(--ease), background-color var(--ease); }
+a.area:hover { border-color: var(--gold); background: rgba(255,255,255,.07); }
+.area-more { margin-top: auto; padding-top: 14px; color: var(--gold); font-weight: 700; font-size: .9rem; }
+.town-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+.town-places { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-wrap: wrap; gap: 8px; }
+.town-places li { background: var(--sand); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: .95rem; }
+.town-points { padding: 0; list-style: none; margin: 0; }
+.town-points li { padding: 6px 0 6px 28px; position: relative; }
+.town-points li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 800; }
+.town-est { margin-top: 16px; }
+.reviews.single { grid-template-columns: minmax(0, 640px); justify-content: center; }
+.nearby { padding: 40px 0; text-align: center; }
+.nearby p { margin: 6px 0; }
+.nearby a { color: var(--red); font-weight: 700; }
+@media (max-width: 1023px) { .town-grid { grid-template-columns: 1fr; } }
 .mobile-bar { display: none; }
 
 /* Responsive */
