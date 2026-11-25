@@ -193,6 +193,7 @@ def layout(*, path, title, description, body, schema, og_title=None):
   <meta name="description" content="{description}">
   <link rel="canonical" href="{url}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="google-site-verification" content="P151AKQfPSG1wQbQof6HxM4MtWVv_O-pmnW42BDxnn8">
   <meta name="author" content="Karan, Port City Christmas Lights">
   <meta name="theme-color" content="#0b1424">
   <meta name="geo.region" content="CA-NB">
