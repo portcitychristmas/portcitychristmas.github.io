@@ -198,7 +198,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 
 /* Areas */
 .night { background: var(--night); color: #fff; position: relative; }
-.areas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.areas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
 .area { border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 24px; background: rgba(255,255,255,.03); }
 .area h3 { color: var(--gold); }
 .area p { color: #b9c2d2; margin: 0; font-size: .95rem; }
@@ -283,6 +283,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .hero-art { width: 100%; max-width: 460px; margin: 0 auto; }
   .cards, .steps { grid-template-columns: 1fr 1fr; }
   .areas { grid-template-columns: 1fr 1fr; }
+  .area:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .calc { position: static; }
 }
 @media (min-width: 1024px) { .mobile-menu { display: none !important; } }
