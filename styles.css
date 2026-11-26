@@ -274,6 +274,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .copyright { border-top: 1px solid rgba(255,255,255,.08); margin-top: 40px; padding-top: 20px; font-size: .85rem; }
 
 /* Inner pages (multi-page site) */
+.h1-kicker { display: block; font-family: var(--body); font-size: .85rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); text-shadow: none; margin-bottom: 18px; line-height: 1.4; }
 .nav-links a[aria-current="page"] { color: var(--gold); }
 .page-hero {
   position: relative; overflow: hidden; color: #fff;

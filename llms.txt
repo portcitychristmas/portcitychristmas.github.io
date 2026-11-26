@@ -2,11 +2,14 @@
 
 > Christmas light hanging for homes in Greater Saint John, New Brunswick, Canada (Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield). A one-person local business run by Karan, who hangs the lights homeowners already own. Jobs start at $200 CAD. Same-day appointments are available.
 
+Last updated: November 2026
+
 ## Contact
 
 - Phone and text: 506-799-2790 (+1-506-799-2790)
 - Hours: 7 days a week, 8am to 8pm
 - Website: https://portcitychristmas.github.io/
+- Google Business Profile: https://g.page/r/CezxlFJ04hWNEBM
 - Facebook: https://www.facebook.com/portcitychristmaslights
 - Instagram: https://www.instagram.com/portcitychristmaslights/
 
@@ -36,29 +39,61 @@ Final price is confirmed after a photo or address check, usually within a day an
 
 ## Service areas
 
-- Saint John (East, West, North and South End, Millidgeville, Lakewood and more)
-- Rothesay
-- Quispamsis (Hammond River to Meenan's Cove)
-- Hampton, plus nearby Lakeside, Smithtown, Nauwigewauk and Norton
-- Grand Bay-Westfield
+- Saint John: Uptown, East Side, West Side, North End, South End, Millidgeville, Lakewood
+- Rothesay: Renforth, Fairvale, East Riverside-Kingshurst, Rothesay Common area, Wells
+- Quispamsis: Hammond River, Meenan's Cove, Gondola Point, Model Farm
+- Hampton: Hampton, Lakeside, Smithtown, Nauwigewauk, Norton
+- Grand Bay-Westfield: Grand Bay, Westfield, Pamdenec, Nerepis
 - Just outside these areas: text to ask
 
 ## How to book
 
-1. Use the instant estimator on the website, or text your address
+1. Use the instant estimator on the website, or text your address to 506-799-2790
 2. Text a photo of the front of the house to confirm the price
 3. Pick a date (same-day often available)
 4. Leave the lights by the door or in the garage; the customer doesn't need to be home
 
+## FAQ
+
+### How much does Christmas light hanging cost in Saint John?
+It depends on your house: $200 for a mini-home or small bungalow, $250 for a bungalow and $350 for a large bungalow or split-level. Two-storey homes get a custom quote from a photo. Extras like a garage roofline (+$75), bushes (+$30 each), small trees (+$50 each), railings (+$30 each) and windows (+$25 each) are added on. Every job is at least $200.
+
+### Do I have to supply the lights?
+That's the idea. Most people already own lights, so I hang yours. If you don't have enough, or don't have any, I can bring them. They're added to your quote and you keep them.
+
+### When do you hang Christmas lights?
+Hanging runs from early November into December, 7 days a week from 8am to 8pm. Same-day appointments are available.
+
+### Which areas do you cover?
+Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield, plus nearby communities like Lakeside, Smithtown, Nauwigewauk and Norton. Just outside these areas? Text me and I can often make it work.
+
+### What if some of my lights don't work?
+I test every strand before it goes up. If one is dead, I'll let you know before I start. I can bring a replacement, or we leave that section out. Your call.
+
+### How do I get a price?
+Send me your address by text, phone or the quote form. I can usually measure from satellite and street view, so you'll get a fixed price within a day without a visit.
+
+### Will it damage my roof or gutters?
+No. I use clips made for gutters and shingles. There are no nails, screws or drilling.
+
+### Do I need to be home?
+No. Leave your lights by the door or in the garage, and make sure I can reach an outdoor outlet. I'll text you a photo when it's done.
+
+### How do I pay?
+No deposit. You pay once your lights are up, by e-transfer or cash.
+
+### Why are you cheaper than the big companies?
+They rent you their lights for the season and charge for them every year. I hang the lights you already own, and I'm a one-person local business with no office or sales team.
+
 ## Pages
 
-- [Home](https://portcitychristmas.github.io/): overview, what's included, how it works, reviews
+- [Home: overview, what's included, how it works, reviews](https://portcitychristmas.github.io/)
 - [Pricing and instant estimator](https://portcitychristmas.github.io/pricing/)
-- [Free quote](https://portcitychristmas.github.io/quote/): quote form, phone and text
-- [FAQ](https://portcitychristmas.github.io/faq/)
 - [Service areas](https://portcitychristmas.github.io/service-areas/)
   - [Saint John](https://portcitychristmas.github.io/service-areas/saint-john/)
   - [Rothesay](https://portcitychristmas.github.io/service-areas/rothesay/)
   - [Quispamsis](https://portcitychristmas.github.io/service-areas/quispamsis/)
   - [Hampton](https://portcitychristmas.github.io/service-areas/hampton/)
   - [Grand Bay-Westfield](https://portcitychristmas.github.io/service-areas/grand-bay-westfield/)
+- [FAQ](https://portcitychristmas.github.io/faq/)
+- [Free quote: quote form, phone and text](https://portcitychristmas.github.io/quote/)
