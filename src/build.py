@@ -18,6 +18,7 @@ SITE = "https://portcitychristmas.github.io"
 PHONE_DISPLAY = "506-799-2790"
 PHONE_TEL = "+15067992790"
 START_PRICE = 200
+TRAVEL_FEE = 25  # Hampton area, added once per job
 # Paste your Google review link here once your Business Profile is verified
 # (Business Profile > "Ask for reviews" > copy link), then run: python src/build.py
 # While it's empty, the review button opens a text message instead.
@@ -80,7 +81,7 @@ AREAS = [
         "card": "Hampton and nearby Lakeside, Smithtown, Nauwigewauk and Norton.",
         "places": ["Hampton", "Lakeside", "Smithtown", "Nauwigewauk", "Norton"],
         "intro": "I'm hanging lights in Hampton this season, and I also cover nearby Lakeside, Smithtown, Nauwigewauk and Norton.",
-        "review": None,
+        "review": None, "travel_fee": TRAVEL_FEE,
     },
     {
         "slug": "grand-bay-westfield", "name": "Grand Bay-Westfield",
@@ -109,7 +110,7 @@ EXTRAS = [
 
 FAQS = [
     ("How much does Christmas light hanging cost in Saint John?",
-     "It depends on your house: $200 for a mini-home or small bungalow, $250 for a bungalow and $350 for a large bungalow or split-level. Two-storey homes get a custom quote from a photo. Extras like a garage roofline (+$75), bushes (+$30 each), small trees (+$50 each), railings (+$30 each) and windows (+$25 each) are added on. Every job is at least $200."),
+     "It depends on your house: $200 for a mini-home or small bungalow, $250 for a bungalow and $350 for a large bungalow or split-level. Two-storey homes get a custom quote from a photo. Extras like a garage roofline (+$75), bushes (+$30 each), small trees (+$50 each), railings (+$30 each) and windows (+$25 each) are added on. Every job is at least $200. Homes in the Hampton area (Hampton, Lakeside, Smithtown, Nauwigewauk and Norton) have a $25 travel fee."),
     ("Do I have to supply the lights?",
      "That's the idea. Most people already own lights, so I hang yours. If you don't have enough, or don't have any, I can bring them. They're added to your quote and you keep them."),
     ("When do you hang Christmas lights?",
@@ -162,6 +163,7 @@ BUSINESS = {
              {"@type": "Offer", "name": n + " home", "description": "Custom quote from a photo", "itemOffered": {"@id": f"{SITE}/#service"}}
              for n, p in PRICES]
             + [{"@type": "Offer", "name": n + (" (each)" if e else ""), "price": p, "priceCurrency": "CAD"} for n, p, e in EXTRAS]
+            + [{"@type": "Offer", "name": "Travel fee, Hampton area (Hampton, Lakeside, Smithtown, Nauwigewauk, Norton)", "price": str(TRAVEL_FEE), "priceCurrency": "CAD"}]
             + [{"@type": "Offer", "name": "Permanent light installation (Govee and similar)", "description": "Custom quote from a photo", "itemOffered": {"@id": f"{SITE}/#permanent"}}],
     },
 }
@@ -402,9 +404,10 @@ def faq_section(items, heading=None):
     </section>"""
 
 
-def price_table():
+def price_table(fee=None):
     rows = "\n".join(f'              <li><b>{n}</b><span>{"$" + p if p else "Custom quote"}</span></li>' for n, p in PRICES)
     extras = "\n".join(f'              <li><b>{n}</b><span>+${p}{e}</span></li>' for n, p, e in EXTRAS)
+    fee_row = f'\n              <li><b>Travel fee (Hampton area)</b><span>+${fee}</span></li>' if fee else ""
     return f"""          <div class="price-card">
             <div class="price-top">
               <span>Hanging from</span>
@@ -414,7 +417,7 @@ def price_table():
 {rows}
             </ul>
             <ul class="price-list price-table extras">
-{extras}
+{extras}{fee_row}
             </ul>
             <p class="fine"><strong class="same-day">Same-day appointments available.</strong> Need lights? I can bring them, and they're added to your quote.</p>
           </div>"""
@@ -652,14 +655,15 @@ def page_town(a):
          (f"All of {name}, plus nearby " + ", ".join(a["places"][1:-1]) + f" and {a['places'][-1]}" if a["places"][0] == name
           else f"All of {name}, including {covered}") + f". Just outside {name}? Text me at {PHONE_DISPLAY} and I can often make it work."),
         (f"How much does it cost to hang Christmas lights in {name}?",
-         f"The same as everywhere I work: $200 for a mini-home or small bungalow, $250 for a bungalow and $350 for a large bungalow or split-level. Two-storey homes get a custom quote. Every job is at least ${START_PRICE}."),
+         (f"The same house prices as everywhere I work, plus a ${a['travel_fee']} travel fee for the {name} area: " if a.get("travel_fee") else "The same as everywhere I work: ")
+         + f"$200 for a mini-home or small bungalow, $250 for a bungalow and $350 for a large bungalow or split-level. Two-storey homes get a custom quote. Every job is at least ${START_PRICE}."),
         (f"How do I book in {name}?",
          f"Text your address and a photo of your house to {PHONE_DISPLAY}, or use the quote form. I'll confirm your price, usually within a day, and same-day appointments are available."),
         FAQS[1], FAQS[6], FAQS[7],
     ]
     body = "\n\n".join(x for x in [
         page_hero(f"Christmas light hanging in {name}, NB",
-                  f"{a['intro']} Starts at <strong>${START_PRICE}</strong>. <strong>Same-day appointments available.</strong>",
+                  f"{a['intro']} Starts at <strong>${START_PRICE}</strong>" + (f" plus a ${a['travel_fee']} travel fee" if a.get("travel_fee") else "") + f". <strong>Same-day appointments available.</strong>",
                   trail, "Your lights. My ladder."),
         f"""    <section class="section">
       <div class="wrap town-grid">
@@ -678,7 +682,7 @@ def page_town(a):
           </ul>
         </div>
         <div>
-{price_table()}
+{price_table(a.get("travel_fee"))}
           <p class="town-est"><a class="btn btn-primary btn-block" href="/pricing/#estimator">Get an instant estimate</a></p>
         </div>
       </div>
@@ -769,6 +773,7 @@ Last updated: {UPDATED}
 - Minimum job: ${START_PRICE}
 {prices}
 {extras}
+- Travel fee for the Hampton area (Hampton, Lakeside, Smithtown, Nauwigewauk, Norton): +${TRAVEL_FEE} per job
 
 Final price is confirmed after a photo or address check, usually within a day and without a visit. No deposit. Payment by Interac e-Transfer or cash once the lights are up.
 

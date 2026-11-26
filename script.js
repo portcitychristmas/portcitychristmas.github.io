@@ -153,6 +153,7 @@
       "Hi Karan, I'd like a quote for: " + (form.service ? form.service.value : "Christmas light hanging") + "\n" +
       "Name: " + form.name.value.trim() + "\n" +
       "Address: " + form.address.value.trim() + ", " + form.area.value + "\n" +
+      (form.area.value === "Hampton" ? "Hampton-area travel fee: $25\n" : "") +
       (estimate ? "House: " + estimate + "\n" : "") +
       "Lights: " + form.lights.value + "\n" +
       (form.sameday.checked ? "Same-day appointment if possible\n" : "") +
