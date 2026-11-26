@@ -121,7 +121,7 @@ FAQS = [
     ("How do I get a price?",
      "Send me your address by text, phone or the quote form. I can usually measure from satellite and street view, so you'll get a fixed price within a day without a visit."),
     ("Will it damage my roof or gutters?",
-     "No. I use clips made for gutters and shingles. There are no nails, screws or drilling."),
+     "I take care with your roof and gutters. Regular Christmas light strands go up with clips made for gutters and shingles. Permanent lights (like Govee) have to be fastened to the house with small nails or screws, so I show you exactly where they'll go before I start."),
     ("Do I need to be home?",
      "No. Leave your lights by the door or in the garage, and make sure I can reach an outdoor outlet. I'll text you a photo when it's done."),
     ("How do I pay?",
@@ -135,7 +135,7 @@ BUSINESS = {
     "@type": "HomeAndConstructionBusiness",
     "@id": f"{SITE}/#business",
     "name": "Port City Christmas Lights",
-    "description": f"Christmas light hanging for homes in Greater Saint John, New Brunswick. Karan hangs the lights you already own using clips (no nails or drilling). Starts at ${START_PRICE}. Same-day appointments available.",
+    "description": f"Christmas light hanging for homes in Greater Saint John, New Brunswick. Karan hangs the lights you already own, with every strand tested and a neat, secure install. Starts at ${START_PRICE}. Same-day appointments available.",
     "url": f"{SITE}/",
     "image": f"{SITE}/og-image.png",
     "logo": f"{SITE}/apple-touch-icon.png",
@@ -531,7 +531,7 @@ def page_town(a):
           <ul class="town-points">
             <li>I hang the lights you already own, on single and two-storey homes</li>
             <li>Every strand tested before it goes up</li>
-            <li>Clips made for gutters and shingles: no nails, screws or drilling</li>
+            <li>Neat, secure install: clips for regular strands, proper fastening for permanent lights</li>
             <li>Cords run neatly to your outlet, timer set up if you have one</li>
             <li>No lights? I can bring them, and you keep them</li>
             <li>You don't need to be home. I text you a photo when it's done</li>
@@ -555,7 +555,7 @@ def page_town(a):
     return layout(path=path, title=f"Christmas Light Hanging in {name}, NB | Port City Christmas Lights",
                   description=(f"Christmas light hanging in {', '.join(a['places'][:-1])} and {a['places'][-1]}, NB. Your own lights hung from ${START_PRICE}. Same-day appointments: {PHONE_DISPLAY}."
                                if slug == "hampton" else
-                               f"Christmas light hanging in {name}, NB. I hang your own lights, no nails or drilling. From ${START_PRICE}, same-day appointments. Call or text {PHONE_DISPLAY}."),
+                               f"Christmas light hanging in {name}, NB. I hang your own lights, every strand tested. From ${START_PRICE}, same-day appointments. Call or text {PHONE_DISPLAY}."),
                   body=body, schema=[BUSINESS, service([name] + (a["places"][1:] if slug == "hampton" else [])),
                                      faq_schema(town_faqs), breadcrumbs(trail)])
 
@@ -618,7 +618,7 @@ Last updated: {UPDATED}
 
 - Hangs the customer's own Christmas lights on single and two-storey homes
 - Tests every strand before it goes up
-- Uses clips made for gutters and shingles: no nails, screws or drilling
+- Neat, secure install: regular strands go up with clips made for gutters and shingles; permanent lights (like Govee) are fastened with small nails or screws, and the customer is shown where first
 - Runs cords neatly to the outlet and sets up the customer's timer
 - Can supply lights if the customer has none or not enough; these are priced separately and the customer keeps them
 - Hanging season runs from early November into December
