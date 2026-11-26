@@ -21,7 +21,7 @@ START_PRICE = 200
 # Paste your Google review link here once your Business Profile is verified
 # (Business Profile > "Ask for reviews" > copy link), then run: python src/build.py
 # While it's empty, the review button opens a text message instead.
-REVIEW_URL = ""
+REVIEW_URL = "https://g.page/r/CezxlFJ04hWNEBM/review"
 TODAY = date.today().isoformat()
 
 
