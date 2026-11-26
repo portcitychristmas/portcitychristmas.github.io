@@ -347,8 +347,11 @@ a.area:hover { border-color: var(--gold); background: rgba(255,255,255,.07); }
 .review figcaption span { color: var(--muted); font-size: .9rem; }
 .stars-row { display: flex; gap: 2px; color: var(--gold-2); }
 .sample-badge { position: absolute; top: 14px; right: 14px; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); border: 1px dashed var(--muted); border-radius: 999px; padding: 2px 8px; }
-.reviews-note { text-align: center; margin-top: 28px; color: var(--muted); }
-.reviews-note a { color: var(--red); font-weight: 700; }
+.review-cta { margin: 36px auto 0; max-width: 640px; text-align: center; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 24px; box-shadow: var(--shadow); }
+.review-cta:first-child { margin-top: 0; }
+.review-cta p { color: var(--muted); }
+.review-cta strong { color: var(--ink); }
+.review-cta .btn svg { color: var(--gold); }
 @media (max-width: 1023px) { .reviews { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; } }
 
 /* Instant estimator */

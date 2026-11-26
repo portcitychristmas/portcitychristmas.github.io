@@ -18,11 +18,36 @@ SITE = "https://portcitychristmas.github.io"
 PHONE_DISPLAY = "506-799-2790"
 PHONE_TEL = "+15067992790"
 START_PRICE = 200
+# Paste your Google review link here once your Business Profile is verified
+# (Business Profile > "Ask for reviews" > copy link), then run: python src/build.py
+# While it's empty, the review button opens a text message instead.
+REVIEW_URL = ""
 TODAY = date.today().isoformat()
 
 
 def part(name):
-    return (PARTS / f"{name}.html").read_text(encoding="utf-8")
+    return (PARTS / f"{name}.html").read_text(encoding="utf-8").replace("{{REVIEW_CTA}}", review_cta())
+
+
+STAR_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>'
+
+
+def review_link_attrs():
+    if REVIEW_URL:
+        return f'href="{REVIEW_URL}" target="_blank" rel="noopener"'
+    return f'href="sms:{PHONE_TEL}"'
+
+
+def review_cta(town=None):
+    who = f"in {town}" if town else "by Port City"
+    if REVIEW_URL:
+        label, note = "Leave a Google review", "It takes 30 seconds and really helps a small local business."
+    else:
+        label, note = "Leave a review", "Text me a few words about your experience and I'll add it here."
+    return f"""        <div class="review-cta">
+          <p><strong>Had your lights hung {who}?</strong> {note}</p>
+          <a class="btn btn-primary" {review_link_attrs()}>{STAR_ICON} {label}</a>
+        </div>"""
 
 
 # ---------------------------------------------------------------- service areas
@@ -259,7 +284,7 @@ def layout(*, path, title, description, body, schema, og_title=None):
           <span class="logo-text">Port City<small>Christmas Lights</small></span>
         </a>
         <p>Christmas light hanging for homes in Greater Saint John, New Brunswick. Your lights, hung right.</p>
-        <p><a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/quote/">Free quote</a></p>
+        <p><a href="/pricing/">Pricing</a> · <a href="/faq/">FAQ</a> · <a href="/quote/">Free quote</a> · <a {review_link_attrs()}>Leave a review</a></p>
       </div>
       <div>
         <h3 class="footer-h">Contact</h3>
@@ -463,8 +488,13 @@ def page_town(a):
         <div class="reviews single">
 {review_fig(a["review"])}
         </div>
+{review_cta(name)}
       </div>
-    </section>""" if a["review"] else ""
+    </section>""" if a["review"] else f"""    <section class="section alt">
+      <div class="wrap">
+{review_cta(name)}
+      </div>
+    </section>"""
     town_faqs = [
         (f"How much does it cost to hang Christmas lights in {name}?",
          f"The same as everywhere I work: $200 for a mini-home or small bungalow, $250 for a bungalow and $350 for a large bungalow or split-level. Two-storey homes get a custom quote. Every job is at least ${START_PRICE}."),
