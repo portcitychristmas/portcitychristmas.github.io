@@ -354,3 +354,50 @@ a.area:hover { border-color: var(--brand); }
   .mobile-bar a { text-align: center; padding: 17px 8px; font-weight: 600; text-decoration: none; color: var(--ink); }
   .mobile-bar a.hl { background: var(--brand); color: #fff; }
 }
+
+/* ---------- Motion ----------
+   Page changes: cross-document View Transitions (Chrome/Edge 126+, Safari 18.2+).
+   The header and mobile bar stay put while the page content fades and lifts.
+   Browsers without support just load the page normally (with a light fade-in). */
+@view-transition { navigation: auto; }
+.nav { view-transition-name: site-header; }
+.mobile-bar { view-transition-name: mobile-bar; }
+::view-transition-group(site-header), ::view-transition-group(mobile-bar) { animation: none; }
+::view-transition-old(root) { animation: 160ms ease-in both vt-out; }
+::view-transition-new(root) { animation: 360ms cubic-bezier(.2, .7, .2, 1) 40ms both vt-in; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-6px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
+@supports not (view-transition-name: none) {
+  main { animation: vt-in 360ms cubic-bezier(.2, .7, .2, 1) both; }
+}
+
+/* Hero copy settles in on first load */
+.js-reveal .hero-copy > *, .js-reveal .hero-art, .js-reveal .page-hero .wrap > * { animation: rise 700ms cubic-bezier(.2, .7, .2, 1) both; }
+.js-reveal .hero-copy > :nth-child(2), .js-reveal .page-hero .wrap > :nth-child(2) { animation-delay: 60ms; }
+.js-reveal .hero-copy > :nth-child(3), .js-reveal .page-hero .wrap > :nth-child(3) { animation-delay: 120ms; }
+.js-reveal .hero-copy > :nth-child(4), .js-reveal .page-hero .wrap > :nth-child(4) { animation-delay: 180ms; }
+.js-reveal .hero-copy > :nth-child(n+5), .js-reveal .page-hero .wrap > :nth-child(n+5) { animation-delay: 240ms; }
+.js-reveal .hero-art { animation-delay: 160ms; animation-duration: 900ms; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+/* Sections fade up as they scroll into view (script.js adds .is-visible) */
+.js-reveal :is(.section-head, .service, .steps li, .split > *, .checklist li, .review, .review-cta, .info-card, .area, .price-card, .pricing-copy, .faq details, .town-grid > *, .quote-grid > *, .cta-inner > *) {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 600ms ease, transform 700ms cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--d, 0ms);
+}
+.js-reveal .is-visible { opacity: 1 !important; transform: none !important; }
+.js-reveal.reveal-done :is(.section-head, .service, .steps li, .split > *, .checklist li, .review, .review-cta, .info-card, .area, .price-card, .pricing-copy, .faq details, .town-grid > *, .quote-grid > *, .cta-inner > *) { opacity: 1; transform: none; }
+
+/* Small hover touches */
+.service, .area, .review { transition: border-color var(--ease), transform 220ms ease, box-shadow 220ms ease; }
+.service:hover, a.area:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.area-list a::after { transition: transform 200ms ease; }
+.area-list a:hover::after { transform: translateX(4px); }
+.text-link { transition: color var(--ease); }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  main { animation: none !important; }
+  .service:hover, a.area:hover { transform: none; }
+}

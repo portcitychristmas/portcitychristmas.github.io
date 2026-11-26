@@ -195,3 +195,23 @@
 })();
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// ---------- Scroll reveal: sections fade up as they come into view ----------
+(function reveal() {
+  const root = document.documentElement;
+  if (!root.classList.contains("js-reveal")) return;
+  window.__reveal = true;
+  const sel = ".section-head, .service, .steps li, .split > *, .checklist li, .review, .review-cta, .info-card, .area, .price-card, .pricing-copy, .faq details, .town-grid > *, .quote-grid > *, .cta-inner > *";
+  const items = [...document.querySelectorAll(sel)].filter(el => !el.closest(".hero, .page-hero"));
+  // Stagger siblings slightly (max ~240ms) so groups ripple in instead of popping.
+  items.forEach(el => {
+    const sibs = [...el.parentElement.children].filter(c => items.includes(c));
+    el.style.setProperty("--d", Math.min(sibs.indexOf(el), 4) * 60 + "ms");
+  });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+  items.forEach(el => io.observe(el));
+})();
