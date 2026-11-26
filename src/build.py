@@ -48,7 +48,7 @@ def review_cta(town=None):
     else:
         label, note = "Leave a review", "Text me a few words about your experience and I'll add it here."
     return f"""        <div class="review-cta">
-          <p><strong>Had your lights hung {who}?</strong> {note}</p>
+          <p><strong>Had your lights installed {who}?</strong> {note}</p>
           <a class="btn btn-primary" {review_link_attrs()}>{STAR_ICON} {label}</a>
         </div>"""
 
@@ -59,7 +59,7 @@ AREAS = [
         "slug": "saint-john", "name": "Saint John",
         "card": "East, West, North and South End, Millidgeville, Lakewood and more.",
         "places": ["Uptown", "East Side", "West Side", "North End", "South End", "Millidgeville", "Lakewood"],
-        "intro": "From the East Side to the West Side, I hang the lights you already own on homes all over Saint John.",
+        "intro": "From the East Side to the West Side, I install permanent Christmas lights on homes all over Saint John.",
         "review": "Andrew B.",
     },
     {
@@ -80,7 +80,7 @@ AREAS = [
         "slug": "hampton", "name": "Hampton",
         "card": "Hampton and nearby Lakeside, Smithtown, Nauwigewauk and Norton.",
         "places": ["Hampton", "Lakeside", "Smithtown", "Nauwigewauk", "Norton"],
-        "intro": "I'm hanging lights in Hampton this season, and I also cover nearby Lakeside, Smithtown, Nauwigewauk and Norton.",
+        "intro": "I'm installing lights in Hampton this season, and I also cover nearby Lakeside, Smithtown, Nauwigewauk and Norton.",
         "review": None, "travel_fee": TRAVEL_FEE,
     },
     {
@@ -99,51 +99,52 @@ REVIEWS = {
     "Jason W.": ("Grand Bay-Westfield", "Just needed a hand with the higher part of the house that I couldn’t reach safely. Karan took care of it, and everything matched the lights I’d already put up. Happy with the result."),
 }
 
-PRICES = [
-    ("Mini-home / small bungalow", "200"), ("Bungalow", "250"),
-    ("Large bungalow / split-level", "350"), ("Two-storey", None),
-]
-EXTRAS = [
-    ("Attached garage roofline", "75", ""), ("Bushes", "30", " each"),
-    ("Small trees (up to 8 ft)", "50", " each"), ("Railings", "30", " each"), ("Windows", "25", " each"),
-]
+GARAGE = 75
+KIT_LINE = "I can pick up a Govee kit from Costco for you. The kit cost plus a small pickup fee is added to your quote."
+SERVICE_NAME = "Permanent Christmas light installation"
+
+COST_ANSWER = (f"Installation starts at ${START_PRICE}. Your final price depends on the length of your roofline and your house, "
+               f"and I confirm it from a photo, usually within a day. An attached garage roofline is +${GARAGE}, and homes in the "
+               f"Hampton area (Hampton, Lakeside, Smithtown, Nauwigewauk and Norton) have a ${TRAVEL_FEE} travel fee. "
+               "If I pick up the lights for you, the kit cost plus a small pickup fee is added.")
 
 FAQS = [
-    ("How much does Christmas light hanging cost in Saint John?",
-     "It depends on your house: $200 for a mini-home or small bungalow, $250 for a bungalow and $350 for a large bungalow or split-level. Two-storey homes get a custom quote from a photo. Extras like a garage roofline (+$75), bushes (+$30 each), small trees (+$50 each), railings (+$30 each) and windows (+$25 each) are added on. Every job is at least $200. Homes in the Hampton area (Hampton, Lakeside, Smithtown, Nauwigewauk and Norton) have a $25 travel fee."),
-    ("Do I have to supply the lights?",
-     "That's the idea. Most people already own lights, so I hang yours. If you don't have enough, or don't have any, I can bring them. They're added to your quote and you keep them."),
-    ("When do you hang Christmas lights?",
-     "Hanging runs from early November into December, 7 days a week from 8am to 8pm. Same-day appointments are available."),
+    ("How much does permanent Christmas light installation cost?", COST_ANSWER),
+    ("Do I need to buy the lights?",
+     "You can bring your own Govee or similar permanent light kit, or " + KIT_LINE[0].lower() + KIT_LINE[1:]),
+    ("Which lights do you install?",
+     "Govee Permanent Outdoor Lights and similar permanent light kits. Tell me which one you have or are looking at."),
+    ("Why permanent lights instead of regular Christmas lights?",
+     "They go up once and stay up all year, so there's no ladder every November and no takedown in January. You change colours and patterns from the app, for Christmas or any night of the year."),
+    ("When can you install?",
+     "7 days a week from 8am to 8pm. Same-day appointments are often available."),
     ("Which areas do you cover?",
      "Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield, plus nearby communities like Lakeside, Smithtown, Nauwigewauk and Norton. Just outside these areas? Text me and I can often make it work."),
-    ("Do you install Govee permanent lights?",
-     "Yes. I install Govee and similar permanent outdoor lights along your roofline. Buy the kit yourself or I can supply it, and every install gets a custom quote from a photo. See the permanent lights page for details."),
-    ("What if some of my lights don't work?",
-     "I test every strand before it goes up. If one is dead, I'll let you know before I start. I can bring a replacement, or we leave that section out. Your call."),
+    ("Do permanent lights need screws or nails?",
+     "Yes. Permanent lights have to be fastened to the house with small screws or nails. I show you exactly where they'll go before I start."),
     ("How do I get a price?",
-     "Send me your address by text, phone or the quote form. I can usually measure from satellite and street view, so you'll get a fixed price within a day without a visit."),
-    ("Will it damage my roof or gutters?",
-     "I take care with your roof and gutters. Regular Christmas light strands go up with clips made for gutters and shingles. Permanent lights (like Govee) have to be fastened to the house with small nails or screws, so I show you exactly where they'll go before I start."),
-    ("Do I need to be home?",
-     "No. Leave your lights by the door or in the garage, and make sure I can reach an outdoor outlet. I'll text you a photo when it's done."),
+     "Send me your address and a photo of the front of your house by text, phone or the quote form. I can usually measure from satellite and street view, so you'll get a fixed price within a day without a visit."),
     ("How do I pay?",
      "No deposit. You pay once your lights are up, by e-transfer or cash."),
-    ("Why are you cheaper than the big companies?",
-     "They rent you their lights for the season and charge for them every year. I hang the lights you already own, and I'm a one-person local business with no office or sales team."),
 ]
+FAQ_BUY, FAQ_WHY, FAQ_SCREWS = FAQS[1], FAQS[3], FAQS[6]
+
+CHECKS = ["Govee and similar permanent light kits", "Single and two-storey homes",
+          "Straight, even runs along your roofline", "Fastening points shown to you first",
+          "Power run neatly to your outdoor outlet", "Everything tested before I leave",
+          "No kit yet? I'll pick one up from Costco", "No deposit. Pay by e-transfer or cash after"]
 
 # ---------------------------------------------------------------- structured data
 BUSINESS = {
     "@type": "HomeAndConstructionBusiness",
     "@id": f"{SITE}/#business",
     "name": "Port City Christmas Lights",
-    "description": f"Christmas light hanging for homes in Greater Saint John, New Brunswick. Karan hangs the lights you already own, with every strand tested and a neat, secure install. Starts at ${START_PRICE}. Same-day appointments available.",
+    "description": f"Permanent Christmas light installation for homes in Greater Saint John, New Brunswick. Karan installs Govee and similar permanent lights along the roofline. Bring your own kit, or he can pick one up from Costco for you. Installation from ${START_PRICE}. Same-day appointments available.",
     "url": f"{SITE}/",
     "image": f"{SITE}/og-image.png",
     "logo": f"{SITE}/apple-touch-icon.png",
     "telephone": "+1-506-799-2790",
-    "priceRange": f"${START_PRICE} to $350+",
+    "priceRange": f"From ${START_PRICE}",
     "currenciesAccepted": "CAD",
     "paymentAccepted": "Cash, Interac e-Transfer",
     "address": {"@type": "PostalAddress", "addressLocality": "Saint John", "addressRegion": "NB", "addressCountry": "CA"},
@@ -155,16 +156,15 @@ BUSINESS = {
         "opens": "08:00", "closes": "20:00"}],
     "founder": {"@id": f"{SITE}/#karan"},
     "sameAs": ["https://www.facebook.com/portcitychristmaslights", "https://www.instagram.com/portcitychristmaslights/", GOOGLE_PROFILE],
-    "knowsAbout": ["Christmas light installation", "Holiday lighting", "Permanent outdoor lighting installation", "Govee permanent outdoor lights"],
+    "knowsAbout": ["Permanent Christmas light installation", "Govee permanent outdoor lights", "Permanent outdoor lighting"],
     "hasOfferCatalog": {
-        "@type": "OfferCatalog", "name": "Christmas light hanging",
-        "itemListElement":
-            [{"@type": "Offer", "name": n, "price": p, "priceCurrency": "CAD", "itemOffered": {"@id": f"{SITE}/#service"}} if p else
-             {"@type": "Offer", "name": n + " home", "description": "Custom quote from a photo", "itemOffered": {"@id": f"{SITE}/#service"}}
-             for n, p in PRICES]
-            + [{"@type": "Offer", "name": n + (" (each)" if e else ""), "price": p, "priceCurrency": "CAD"} for n, p, e in EXTRAS]
-            + [{"@type": "Offer", "name": "Travel fee, Hampton area (Hampton, Lakeside, Smithtown, Nauwigewauk, Norton)", "price": str(TRAVEL_FEE), "priceCurrency": "CAD"}]
-            + [{"@type": "Offer", "name": "Permanent light installation (Govee and similar)", "description": "Custom quote from a photo", "itemOffered": {"@id": f"{SITE}/#permanent"}}],
+        "@type": "OfferCatalog", "name": SERVICE_NAME,
+        "itemListElement": [
+            {"@type": "Offer", "name": "Permanent light installation (starting price)", "price": str(START_PRICE), "priceCurrency": "CAD", "itemOffered": {"@id": f"{SITE}/#service"}},
+            {"@type": "Offer", "name": "Attached garage roofline", "price": str(GARAGE), "priceCurrency": "CAD"},
+            {"@type": "Offer", "name": "Travel fee, Hampton area (Hampton, Lakeside, Smithtown, Nauwigewauk, Norton)", "price": str(TRAVEL_FEE), "priceCurrency": "CAD"},
+            {"@type": "Offer", "name": "Govee kit picked up from Costco", "description": "Kit cost plus a small pickup fee, added to the quote"},
+        ],
     },
 }
 PERSON = {"@type": "Person", "@id": f"{SITE}/#karan", "name": "Karan", "jobTitle": "Owner and installer",
@@ -176,24 +176,13 @@ WEBSITE = {"@type": "WebSite", "@id": f"{SITE}/#website", "url": f"{SITE}/", "na
 def service(areas):
     return {
         "@type": "Service", "@id": f"{SITE}/#service" if len(areas) > 1 else None,
-        "serviceType": "Christmas light installation",
-        "name": "Christmas light hanging",
-        "description": "I hang your own Christmas lights on single and two-storey homes, test every strand and run cords to your outlet. Lights can be supplied if needed.",
+        "serviceType": SERVICE_NAME,
+        "name": "Permanent Christmas light installation (Govee and similar)",
+        "description": "Installation of Govee and similar permanent lights along the roofline of single and two-storey homes. Bring your own kit, or a Govee kit can be picked up from Costco for you.",
         "provider": {"@id": f"{SITE}/#business"},
         "areaServed": [f"{a}, NB" for a in areas],
-        "offers": {"@type": "Offer", "price": str(START_PRICE), "priceCurrency": "CAD", "description": "Minimum job price"},
+        "offers": {"@type": "Offer", "price": str(START_PRICE), "priceCurrency": "CAD", "description": "Starting price"},
     }
-
-
-PERMANENT_SERVICE = {
-    "@type": "Service", "@id": f"{SITE}/#permanent",
-    "serviceType": "Permanent outdoor lighting installation",
-    "name": "Govee permanent light installation",
-    "description": "Installation of Govee and similar permanent outdoor lights along the roofline. Customer can supply the kit, or it can be supplied. Custom quote from a photo.",
-    "provider": {"@id": f"{SITE}/#business"},
-    "areaServed": [f"{a['name']}, NB" for a in AREAS],
-    "url": f"{SITE}/permanent-lights/",
-}
 
 
 def breadcrumbs(trail):
@@ -213,7 +202,7 @@ def ld(nodes):
 
 
 # ---------------------------------------------------------------- layout
-NAV = [("Pricing", "/pricing/"), ("Permanent lights", "/permanent-lights/"), ("Service areas", "/service-areas/"), ("Reviews", "/#reviews"), ("FAQ", "/faq/")]
+NAV = [("Christmas lights / permanent", "/permanent-lights/"), ("Pricing", "/pricing/"), ("Service areas", "/service-areas/"), ("Reviews", "/#reviews"), ("FAQ", "/faq/")]
 FB = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.7V14h2.7v8z"/></svg>'
 IG = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>'
 SOCIAL = (f'<a class="social-link" href="https://www.facebook.com/portcitychristmaslights" target="_blank" rel="noopener">{FB} Facebook</a> &nbsp; '
@@ -247,7 +236,7 @@ def layout(*, path, title, description, body, schema, og_title=None, index=True)
   <meta name="robots" content="{robots}">
   <meta name="google-site-verification" content="P151AKQfPSG1wQbQof6HxM4MtWVv_O-pmnW42BDxnn8">
   <meta name="author" content="Karan, Port City Christmas Lights">
-  <meta name="theme-color" content="#0b1424">
+  <meta name="theme-color" content="#1f4a37">
   <meta name="geo.region" content="CA-NB">
   <meta name="geo.placename" content="Saint John">
   <meta property="og:type" content="website">
@@ -310,8 +299,8 @@ def layout(*, path, title, description, body, schema, og_title=None, index=True)
           <span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="logo-text">Port City<small>Christmas Lights</small></span>
         </a>
-        <p>Christmas light hanging for homes in Greater Saint John, New Brunswick. Your lights, hung right.</p>
-        <p><a href="/pricing/">Pricing</a> · <a href="/permanent-lights/">Permanent lights</a> · <a href="/faq/">FAQ</a> · <a href="/quote/">Free quote</a> · <a {review_link_attrs()}>Leave a review</a></p>
+        <p>Permanent Christmas light installation for homes in Greater Saint John, New Brunswick. Your lights, my ladder.</p>
+        <p><a href="/pricing/">Pricing</a> · <a href="/permanent-lights/">Christmas lights / permanent</a> · <a href="/faq/">FAQ</a> · <a href="/quote/">Free quote</a> · <a {review_link_attrs()}>Leave a review</a></p>
       </div>
       <div>
         <h3 class="footer-h">Contact</h3>
@@ -357,7 +346,7 @@ def page_hero(h1, lead, trail, eyebrow=None, quote="/quote/"):
     </section>"""
 
 
-def areas_section(heading="Where I hang Christmas lights", tag="h2"):
+def areas_section(heading="Where I install", tag="h2"):
     cards = "\n".join(
         f'          <a class="area" href="/service-areas/{a["slug"]}/"><h3>{a["name"]}</h3><p>{a["card"]}</p><span class="area-more">Lights in {a["name"]} →</span></a>'
         for a in AREAS)
@@ -366,7 +355,7 @@ def areas_section(heading="Where I hang Christmas lights", tag="h2"):
         <div class="section-head light">
           <p class="eyebrow">Greater Saint John</p>
           <{tag}>{heading}</{tag}>
-          <p>Local, so I'm close by for installs and quick fixes all season.</p>
+          <p>Local, so I'm close by for installs and any fixes later.</p>
         </div>
         <div class="areas">
 {cards}
@@ -405,21 +394,17 @@ def faq_section(items, heading=None):
 
 
 def price_table(fee=None):
-    rows = "\n".join(f'              <li><b>{n}</b><span>{"$" + p if p else "Custom quote"}</span></li>' for n, p in PRICES)
-    extras = "\n".join(f'              <li><b>{n}</b><span>+${p}{e}</span></li>' for n, p, e in EXTRAS)
     fee_row = f'\n              <li><b>Travel fee (Hampton area)</b><span>+${fee}</span></li>' if fee else ""
     return f"""          <div class="price-card">
             <div class="price-top">
-              <span>Hanging from</span>
+              <span>Installation from</span>
               <strong>${START_PRICE}</strong>
             </div>
-            <ul class="price-list price-table">
-{rows}
-            </ul>
             <ul class="price-list price-table extras">
-{extras}{fee_row}
+              <li><b>Attached garage roofline</b><span>+${GARAGE}</span></li>{fee_row}
+              <li><b>Govee kit picked up from Costco</b><span>Kit cost + pickup fee</span></li>
             </ul>
-            <p class="fine"><strong class="same-day">Same-day appointments available.</strong> Need lights? I can bring them, and they're added to your quote.</p>
+            <p class="fine">Final price confirmed from a photo of your house. <strong class="same-day">Same-day appointments available.</strong></p>
           </div>"""
 
 
@@ -427,12 +412,11 @@ CTA = part("final-cta")
 
 
 # ---------------------------------------------------------------- pages
+def checklist_html(items, indent="            "):
+    return "\n".join(f"{indent}<li>{c}</li>" for c in items)
+
+
 def page_home():
-    checks = ["Every strand tested before it goes up", "Single and two-storey homes",
-              "Neat, secure install for your type of lights", "Cords run to your outlet, timer set up",
-              "No lights? I can bring them, and you keep them", "You don't need to be home",
-              "A photo texted to you when it's done", "No deposit. Pay by e-transfer or cash after"]
-    checklist = "\n".join(f"            <li>{c}</li>" for c in checks)
     reviews = "\n".join(review_fig(n) for n in REVIEWS)
     area_links = "\n".join(f'            <li><a href="/service-areas/{a["slug"]}/">{a["name"]}</a></li>' for a in AREAS)
     body = "\n\n".join([
@@ -440,19 +424,19 @@ def page_home():
         f"""    <section class="section alt" id="services">
       <div class="wrap">
         <div class="section-head">
-          <h2>Two ways I can help</h2>
-          <p>Seasonal lights you already own, or permanent lights that stay up all year.</p>
+          <h2>Christmas lights / permanent</h2>
+          <p>Permanent lights go up once and stay up. Here's how to get yours.</p>
         </div>
         <div class="services">
           <article class="service">
-            <h3>Christmas light hanging</h3>
-            <p>Bring your lights up from the basement and I'll get them on the roof. Every strand tested, hung neatly and plugged in, on single and two-storey homes.</p>
-            <div class="service-meta"><span class="service-price">From ${START_PRICE}</span><a class="text-link" href="/pricing/">See prices →</a></div>
+            <h3>Already have a kit?</h3>
+            <p>Bought Govee or similar permanent lights? I install them cleanly along your roofline, run the power and make sure everything lights up.</p>
+            <div class="service-meta"><span class="service-price">Installation from ${START_PRICE}</span><a class="text-link" href="/pricing/">See prices →</a></div>
           </article>
           <article class="service">
-            <h3>Permanent lights</h3>
-            <p>Govee and similar permanent outdoor lights, installed cleanly along your roofline. Buy the kit yourself, or I can supply it.</p>
-            <div class="service-meta"><span class="service-price">Custom quote</span><a class="text-link" href="/permanent-lights/">Learn more →</a></div>
+            <h3>Need the lights?</h3>
+            <p>{KIT_LINE}</p>
+            <div class="service-meta"><span class="service-price">Quoted with your install</span><a class="text-link" href="/permanent-lights/">Learn more →</a></div>
           </article>
         </div>
       </div>
@@ -461,12 +445,12 @@ def page_home():
       <div class="wrap">
         <div class="section-head">
           <h2>How it works</h2>
-          <p>Three steps, and the only thing you carry is the bin of lights.</p>
+          <p>Three steps, and no ladder for you, this year or any year after.</p>
         </div>
         <ol class="steps">
-          <li><span>01</span><h3>Send your address and a photo</h3><p>Text me or use the quote form. I'll confirm a fixed price, usually within a day, without a visit.</p></li>
+          <li><span>01</span><h3>Send your address and a photo</h3><p>Tell me which kit you have, or if you'd like me to pick one up. I'll confirm a fixed price, usually within a day.</p></li>
           <li><span>02</span><h3>Pick a date</h3><p>Same-day appointments are often available, 7 days a week from 8am to 8pm.</p></li>
-          <li><span>03</span><h3>Lights go up</h3><p>Every strand tested, hung neatly and plugged in. I text you a photo when it's done.</p></li>
+          <li><span>03</span><h3>Install day</h3><p>I install the lights, run the power and make sure everything lights up before I leave.</p></li>
         </ol>
       </div>
     </section>""",
@@ -475,11 +459,11 @@ def page_home():
         <div>
           <h2>One person, done properly</h2>
           <p>I'm Karan. Port City Christmas Lights is my business and I do every job myself, so when you text, you're talking to the person on the ladder.</p>
-          <p>Most people already own plenty of lights. Hanging the ones you have, instead of renting you new ones, is how I keep prices low.</p>
+          <p>Permanent lights go up once and stay up. After install day you change colours from the app, for Christmas, Halloween or any night, with no ladder every November.</p>
           <div class="signature"><span class="signature-badge" aria-hidden="true">K</span><div><strong>Karan</strong><span>Owner and installer</span></div></div>
         </div>
         <ul class="checklist">
-{checklist}
+{checklist_html(CHECKS)}
         </ul>
       </div>
     </section>""",
@@ -515,9 +499,9 @@ def page_home():
       </div>
     </section>""",
         CTA])
-    schema = [WEBSITE, BUSINESS, PERSON, service([a["name"] for a in AREAS]), PERMANENT_SERVICE]
-    return layout(path="/", title="Christmas Light Installation in Saint John, NB | Port City Christmas Lights",
-                  description=f"Christmas light hanging and Govee permanent light installation in Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield, NB. From ${START_PRICE}.",
+    schema = [WEBSITE, BUSINESS, PERSON, service([a["name"] for a in AREAS])]
+    return layout(path="/", title="Permanent Christmas Lights in Saint John, NB | Port City Christmas Lights",
+                  description=f"Permanent Christmas light installation (Govee and similar) in Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield, NB. Bring your kit or I'll pick one up. From ${START_PRICE}.",
                   og_title="Port City Christmas Lights: Your lights. My ladder.", body=body, schema=schema)
 
 
@@ -525,26 +509,23 @@ PERM_FAQS = [
     ("Do you install Govee permanent lights?",
      "Yes. I install Govee Permanent Outdoor Lights and similar permanent light kits along your roofline, on single and two-storey homes in Greater Saint John."),
     ("Can I buy the lights myself?",
-     "Yes. Buy a Govee or similar kit wherever you like and I'll install it. Or I can supply the kit, and its cost is added to your quote."),
-    ("How much does permanent light installation cost?",
-     "It depends on the length of your roofline and the kit, so every install gets a custom quote. Send a photo of the front of your house to get yours, usually within a day."),
-    ("Do permanent lights need screws or nails?",
-     "Yes. Permanent lights have to be fastened to the house with small screws or nails. I show you exactly where they'll go before I start."),
+     "Yes. Buy a Govee or similar kit wherever you like and I'll install it. Or " + KIT_LINE[0].lower() + KIT_LINE[1:]),
+    ("How much does permanent light installation cost?", COST_ANSWER),
+    FAQ_SCREWS,
     ("Do you install brands other than Govee?",
      "Yes, I install similar permanent outdoor light kits too. Tell me which one you have or are looking at."),
 ]
 
 
 def page_permanent():
-    trail = [("Home", "/"), ("Permanent lights", "/permanent-lights/")]
-    checks = ["Govee Permanent Outdoor Lights and similar kits", "Bring your own kit, or I supply it",
+    trail = [("Home", "/"), ("Christmas lights / permanent", "/permanent-lights/")]
+    checks = ["Govee Permanent Outdoor Lights and similar kits", "Bring your own kit, or I pick one up from Costco",
               "Run cleanly and evenly along your roofline", "Fastening points shown to you before I start",
               "Power run neatly to your outdoor outlet", "Single and two-storey homes"]
-    checklist = "\n".join(f"            <li>{c}</li>" for c in checks)
     body = "\n\n".join([
-        page_hero("Govee permanent light installation in Saint John, NB",
-                  "I install Govee and similar permanent outdoor lights on homes across Greater Saint John. Buy the kit yourself or I can supply it. Every install is quoted from a photo of your house.",
-                  trail, "Permanent lights", quote="/quote/?service=permanent"),
+        page_hero("Govee permanent Christmas light installation in Saint John, NB",
+                  f"I install Govee and similar permanent lights on homes across Greater Saint John. Bring your own kit, or I'll pick one up from Costco for you. Installation from <strong>${START_PRICE}</strong>.",
+                  trail, "Christmas lights / permanent"),
         f"""    <section class="section">
       <div class="wrap split">
         <div>
@@ -553,7 +534,7 @@ def page_permanent():
           <p>Getting them straight, secure and neatly powered along a roofline is the hard part. That's the part I do.</p>
         </div>
         <ul class="checklist">
-{checklist}
+{checklist_html(checks)}
         </ul>
       </div>
     </section>""",
@@ -562,7 +543,7 @@ def page_permanent():
         <div class="section-head"><h2>How it works</h2></div>
         <ol class="steps">
           <li><span>01</span><h3>Send a photo</h3><p>Send a photo of the front of your house and tell me which kit you have, or want.</p></li>
-          <li><span>02</span><h3>Get a fixed quote</h3><p>Usually within a day. If I'm supplying the kit, its cost is included.</p></li>
+          <li><span>02</span><h3>Get a fixed quote</h3><p>Usually within a day. If I'm picking up the kit, its cost plus a small pickup fee is included.</p></li>
           <li><span>03</span><h3>Install day</h3><p>I install the lights, run the power and make sure everything lights up before I leave.</p></li>
         </ol>
       </div>
@@ -570,24 +551,39 @@ def page_permanent():
         faq_section(PERM_FAQS, "Permanent light questions"),
         f"""    <section class="nearby">
       <div class="wrap narrow">
-        <p class="disclaimer">Govee is a trademark of its owner. Port City Christmas Lights is an independent installer and is not affiliated with or endorsed by Govee.</p>
+        <p class="disclaimer">Govee is a trademark of its owner. Port City Christmas Lights is an independent installer and is not affiliated with or endorsed by Govee or Costco.</p>
       </div>
     </section>""",
         CTA])
-    return layout(path="/permanent-lights/", title="Govee Permanent Light Installation, Saint John NB | Port City Christmas Lights",
-                  description="Govee and similar permanent outdoor light installation in Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield, NB. Bring your kit or I supply it. Free quote.",
-                  body=body, schema=[BUSINESS, PERMANENT_SERVICE, faq_schema(PERM_FAQS), breadcrumbs(trail)])
+    return layout(path="/permanent-lights/", title="Govee Permanent Christmas Light Installation, Saint John NB | Port City Christmas Lights",
+                  description=f"Govee and similar permanent Christmas light installation in Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield, NB. Bring your kit or I'll pick one up from Costco. From ${START_PRICE}.",
+                  body=body, schema=[BUSINESS, service([a["name"] for a in AREAS]), faq_schema(PERM_FAQS), breadcrumbs(trail)])
 
 
 def page_pricing():
     trail = [("Home", "/"), ("Pricing", "/pricing/")]
     body = "\n\n".join([
-        page_hero("Christmas light hanging prices",
-                  f"Simple, flat prices based on your house. Starts at <strong>${START_PRICE}</strong>. No deposit, pay once your lights are up.",
-                  trail, "Greater Saint John, NB"),
-        part("pricing"), CTA])
-    return layout(path="/pricing/", title="Christmas Light Hanging Prices | Port City Christmas Lights",
-                  description=f"Christmas light hanging prices in Saint John, NB: $200 mini-home, $250 bungalow, $350 large bungalow, custom quote for two-storey. Instant online estimate.",
+        page_hero("Permanent Christmas light installation prices",
+                  f"Installation starts at <strong>${START_PRICE}</strong>. Your final price is confirmed from a photo of your house, usually within a day. No deposit.",
+                  trail, "Christmas lights / permanent"),
+        f"""    <section class="section">
+      <div class="wrap pricing-grid">
+        <div class="pricing-copy">
+          <h2>How pricing works</h2>
+          <p>Every house is different, so the final price depends on the length of your roofline and the number of storeys. Send a photo and I'll give you a fixed price before any work starts.</p>
+          <ul class="checklist single">
+            <li>Bring your own Govee or similar kit, or I pick one up from Costco</li>
+            <li>Kit pickup: the kit cost plus a small pickup fee</li>
+            <li>No deposit. Pay by e-transfer or cash once your lights are up</li>
+          </ul>
+          <div class="hero-actions"><a class="btn btn-primary" href="/quote/">Get a free quote</a></div>
+        </div>
+{price_table(TRAVEL_FEE)}
+      </div>
+    </section>""",
+        CTA])
+    return layout(path="/pricing/", title="Permanent Christmas Light Prices | Port City Christmas Lights",
+                  description=f"Permanent Christmas light installation in Saint John, NB starts at ${START_PRICE}. Attached garage +${GARAGE}, Hampton area +${TRAVEL_FEE}. Govee kit pickup from Costco available. Free quote from a photo.",
                   body=body, schema=[BUSINESS, breadcrumbs(trail)])
 
 
@@ -595,40 +591,41 @@ def page_quote():
     trail = [("Home", "/"), ("Free quote", "/quote/")]
     body = "\n\n".join([
         page_hero("Get your free quote",
-                  "Send me your address and a photo of your house and I'll confirm your price, usually within a day. Same-day appointments are available.",
+                  "Send me your address and a photo of the front of your house and I'll confirm your price, usually within a day. Same-day appointments are available.",
                   trail, "Free · No obligation"),
         part("quote-form")])
-    return layout(path="/quote/", title="Free Christmas Light Hanging Quote | Port City Christmas Lights",
-                  description=f"Get a free Christmas light hanging quote in Greater Saint John, NB. Text your address and a photo to {PHONE_DISPLAY}. From ${START_PRICE}.",
+    return layout(path="/quote/", title="Free Permanent Christmas Light Quote | Port City Christmas Lights",
+                  description=f"Get a free quote for permanent Christmas light installation in Greater Saint John, NB. Text your address and a photo to {PHONE_DISPLAY}. From ${START_PRICE}.",
                   body=body, schema=[BUSINESS, breadcrumbs(trail)])
 
 
 def page_faq():
     trail = [("Home", "/"), ("FAQ", "/faq/")]
     body = "\n\n".join([
-        page_hero("Christmas light hanging FAQ",
-                  "Prices, lights, timing, payment and more. Still have a question? Just text me.",
+        page_hero("Permanent Christmas lights FAQ",
+                  "Prices, lights, installation, payment and more. Still have a question? Just text me.",
                   trail, "Good questions"),
         faq_section(FAQS), CTA])
-    return layout(path="/faq/", title="Christmas Light Hanging FAQ | Port City Christmas Lights",
-                  description="Answers about Christmas light hanging in Greater Saint John: cost, supplying lights, timing, roof safety, payment and service areas.",
+    return layout(path="/faq/", title="Permanent Christmas Lights FAQ | Port City Christmas Lights",
+                  description="Answers about permanent Christmas light installation in Greater Saint John: cost, Govee kits, Costco pickup, fastening, payment and service areas.",
                   body=body, schema=[BUSINESS, faq_schema(FAQS), breadcrumbs(trail)])
 
 
 def page_areas():
     trail = [("Home", "/"), ("Service areas", "/service-areas/")]
     body = "\n\n".join([
-        page_hero("Christmas light hanging service areas",
-                  "I hang Christmas lights in Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield, plus the communities around them.",
+        page_hero("Where I install permanent Christmas lights",
+                  "Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield, plus the communities around them.",
                   trail, "Greater Saint John, NB"),
         areas_section("Pick your town"), CTA])
     return layout(path="/service-areas/", title="Service Areas in Greater Saint John | Port City Christmas Lights",
-                  description="Christmas light hanging in Saint John, Rothesay, Quispamsis, Hampton, Grand Bay-Westfield and nearby communities in New Brunswick.",
+                  description="Permanent Christmas light installation in Saint John, Rothesay, Quispamsis, Hampton, Grand Bay-Westfield and nearby communities in New Brunswick.",
                   body=body, schema=[BUSINESS, service([a["name"] for a in AREAS]), breadcrumbs(trail)])
 
 
 def page_town(a):
     name, slug = a["name"], a["slug"]
+    fee = a.get("travel_fee")
     path = f"/service-areas/{slug}/"
     trail = [("Home", "/"), ("Service areas", "/service-areas/"), (name, path)]
     places = "".join(f"<li>{p}</li>" for p in a["places"])
@@ -654,36 +651,31 @@ def page_town(a):
         (f"Which parts of {name} do you cover?",
          (f"All of {name}, plus nearby " + ", ".join(a["places"][1:-1]) + f" and {a['places'][-1]}" if a["places"][0] == name
           else f"All of {name}, including {covered}") + f". Just outside {name}? Text me at {PHONE_DISPLAY} and I can often make it work."),
-        (f"How much does it cost to hang Christmas lights in {name}?",
-         (f"The same house prices as everywhere I work, plus a ${a['travel_fee']} travel fee for the {name} area: " if a.get("travel_fee") else "The same as everywhere I work: ")
-         + f"$200 for a mini-home or small bungalow, $250 for a bungalow and $350 for a large bungalow or split-level. Two-storey homes get a custom quote. Every job is at least ${START_PRICE}."),
+        (f"How much does permanent light installation cost in {name}?",
+         f"Installation starts at ${START_PRICE}, and your final price is confirmed from a photo of your house. An attached garage roofline is +${GARAGE}"
+         + (f", and the {name} area has a ${fee} travel fee." if fee else ".")
+         + " If I pick up the lights for you, the kit cost plus a small pickup fee is added."),
         (f"How do I book in {name}?",
          f"Text your address and a photo of your house to {PHONE_DISPLAY}, or use the quote form. I'll confirm your price, usually within a day, and same-day appointments are available."),
-        FAQS[1], FAQS[6], FAQS[7],
+        FAQ_BUY, FAQ_WHY, FAQ_SCREWS,
     ]
     body = "\n\n".join(x for x in [
-        page_hero(f"Christmas light hanging in {name}, NB",
-                  f"{a['intro']} Starts at <strong>${START_PRICE}</strong>" + (f" plus a ${a['travel_fee']} travel fee" if a.get("travel_fee") else "") + f". <strong>Same-day appointments available.</strong>",
-                  trail, "Your lights. My ladder."),
+        page_hero(f"Permanent Christmas lights in {name}, NB",
+                  f"{a['intro']} Installation from <strong>${START_PRICE}</strong>" + (f" plus a ${fee} travel fee" if fee else "") + ". <strong>Same-day appointments available.</strong>",
+                  trail, "Christmas lights / permanent", quote=f"/quote/?area={name.replace(' ', '+')}"),
         f"""    <section class="section">
       <div class="wrap town-grid">
         <div>
-          <p class="eyebrow dark">Local service</p>
           <h2>Where I work in {name}</h2>
           <ul class="town-places">{places}</ul>
           <h3>What you get</h3>
           <ul class="town-points">
-            <li>I hang the lights you already own, on single and two-storey homes</li>
-            <li>Every strand tested before it goes up</li>
-            <li>Neat, secure install: clips for regular strands, proper fastening for permanent lights</li>
-            <li>Cords run neatly to your outlet, timer set up if you have one</li>
-            <li>No lights? I can bring them, and you keep them</li>
-            <li>You don't need to be home. I text you a photo when it's done</li>
+{checklist_html(CHECKS[:7])}
           </ul>
         </div>
         <div>
-{price_table(a.get("travel_fee"))}
-          <p class="town-est"><a class="btn btn-primary btn-block" href="/pricing/#estimator">Get an instant estimate</a></p>
+{price_table(fee)}
+          <p class="town-est"><a class="btn btn-primary btn-block" href="/quote/?area={name.replace(' ', '+')}">Get a free quote</a></p>
         </div>
       </div>
     </section>""",
@@ -692,15 +684,14 @@ def page_town(a):
         f"""    <section class="section alt nearby">
       <div class="wrap narrow">
         <p><strong>Also serving:</strong> {others}</p>
-        <p><a href="/quote/?area={name.replace(' ', '+')}">Get a free quote for your {name} home →</a></p>
       </div>
     </section>""",
         CTA] if x)
-    return layout(path=path, title=f"Christmas Light Hanging in {name}, NB | Port City Christmas Lights",
-                  description=(f"Christmas light hanging in {', '.join(a['places'][:-1])} and {a['places'][-1]}, NB. Your own lights hung from ${START_PRICE}. Same-day appointments: {PHONE_DISPLAY}."
-                               if slug == "hampton" else
-                               f"Christmas light hanging in {name}, NB. I hang your own lights, every strand tested. From ${START_PRICE}, same-day appointments. Call or text {PHONE_DISPLAY}."),
-                  body=body, schema=[BUSINESS, service([name] + (a["places"][1:] if slug == "hampton" else [])),
+    return layout(path=path, title=f"Permanent Christmas Lights in {name}, NB | Port City Christmas Lights",
+                  description=(f"Permanent Christmas light installation (Govee and similar) in {', '.join(a['places'][:-1])} and {a['places'][-1]}, NB. From ${START_PRICE} plus ${fee} travel. Call or text {PHONE_DISPLAY}."
+                               if fee else
+                               f"Permanent Christmas light installation (Govee and similar) in {name}, NB. Bring your kit or I'll pick one up. From ${START_PRICE}. Call or text {PHONE_DISPLAY}."),
+                  body=body, schema=[BUSINESS, service([name] + (a["places"][1:] if a["places"][0] == name else [])),
                                      faq_schema(town_faqs), breadcrumbs(trail)])
 
 
@@ -713,39 +704,36 @@ def write(path, html):
 
 def page_404():
     body = f"""    <section class="page-hero">
-      <div class="stars" aria-hidden="true"></div>
       <div class="wrap">
         <p class="eyebrow">Page not found</p>
         <h1>This page has gone dark.</h1>
         <p class="lead">The link may be old. Here's where you probably wanted to go:</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="/">Home</a>
-          <a class="btn btn-outline btn-lg" href="/pricing/">Pricing</a>
-          <a class="btn btn-outline btn-lg" href="/quote/">Free quote</a>
+          <a class="btn btn-secondary btn-lg" href="/pricing/">Pricing</a>
+          <a class="btn btn-secondary btn-lg" href="/quote/">Free quote</a>
         </div>
       </div>
     </section>
 
 {areas_section()}"""
     return layout(path="/404.html", title="Page not found | Port City Christmas Lights",
-                  description="Page not found. Christmas light hanging in Greater Saint John, NB.",
+                  description="Page not found. Permanent Christmas light installation in Greater Saint John, NB.",
                   body=body, schema=[BUSINESS], index=False)
 
 
 def llms_txt(paths):
-    names = {"/": "Home: overview, what's included, how it works, reviews", "/pricing/": "Pricing and instant estimator",
-             "/service-areas/": "Service areas", "/faq/": "FAQ", "/permanent-lights/": "Govee and similar permanent light installation (custom quote)", "/quote/": "Free quote: quote form, phone and text"}
+    names = {"/": "Home: overview, how it works, reviews", "/pricing/": "Pricing",
+             "/service-areas/": "Service areas", "/faq/": "FAQ", "/permanent-lights/": "Govee and similar permanent Christmas light installation", "/quote/": "Free quote: quote form, phone and text"}
     pages = []
     for p in paths:
         town = next((a["name"] for a in AREAS if p == f"/service-areas/{a['slug']}/"), None)
         pages.append(f"{'  ' if town else ''}- [{town or names[p]}]({SITE}{p})")
-    prices = "\n".join(f"- {n}: {'$' + p if p else 'custom quote from a photo'}" for n, p in PRICES)
-    extras = "\n".join(f"- {n}: +${p}{e}" for n, p, e in EXTRAS)
     areas = "\n".join(f"- {a['name']}: {', '.join(a['places'])}" for a in AREAS)
     faqs = "\n\n".join(f"### {q}\n{a}" for q, a in FAQS)
     return f"""# Port City Christmas Lights
 
-> Christmas light hanging for homes in Greater Saint John, New Brunswick, Canada (Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield). A one-person local business run by Karan, who hangs the lights homeowners already own. Jobs start at ${START_PRICE} CAD. Same-day appointments are available.
+> Permanent Christmas light installation for homes in Greater Saint John, New Brunswick, Canada (Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield). A one-person local business run by Karan, who installs Govee and similar permanent lights along the roofline. Customers bring their own kit, or Karan picks one up from Costco for them. Installation starts at ${START_PRICE} CAD. Same-day appointments are available.
 
 Last updated: {UPDATED}
 
@@ -760,22 +748,21 @@ Last updated: {UPDATED}
 
 ## Service
 
-- Hangs the customer's own Christmas lights on single and two-storey homes
-- Tests every strand before it goes up
-- Neat, secure install: regular strands go up with clips made for gutters and shingles; permanent lights (like Govee) are fastened with small nails or screws, and the customer is shown where first
-- Runs cords neatly to the outlet and sets up the customer's timer
-- Can supply lights if the customer has none or not enough; these are priced separately and the customer keeps them
-- Also installs Govee and similar permanent outdoor lights (customer's own kit or supplied), custom quote from a photo
-- Hanging season runs from early November into December
+- Only service: permanent Christmas light installation (Govee Permanent Outdoor Lights and similar kits)
+- Single and two-storey homes; straight, even runs along the roofline
+- Permanent lights are fastened with small screws or nails; the customer is shown where first
+- Power run neatly to the outdoor outlet; everything tested before leaving
+- Customer brings their own kit, or Karan picks up a Govee kit from Costco (kit cost plus a small pickup fee)
+- Not affiliated with Govee or Costco
 
 ## Pricing (CAD)
 
-- Minimum job: ${START_PRICE}
-{prices}
-{extras}
+- Installation: from ${START_PRICE} (final price confirmed from a photo of the house)
+- Attached garage roofline: +${GARAGE}
 - Travel fee for the Hampton area (Hampton, Lakeside, Smithtown, Nauwigewauk, Norton): +${TRAVEL_FEE} per job
+- Govee kit picked up from Costco: kit cost plus a small pickup fee
 
-Final price is confirmed after a photo or address check, usually within a day and without a visit. No deposit. Payment by Interac e-Transfer or cash once the lights are up.
+No deposit. Payment by Interac e-Transfer or cash once the lights are up.
 
 ## Service areas
 
@@ -784,10 +771,10 @@ Final price is confirmed after a photo or address check, usually within a day an
 
 ## How to book
 
-1. Use the instant estimator on the website, or text your address to {PHONE_DISPLAY}
-2. Text a photo of the front of the house to confirm the price
-3. Pick a date (same-day often available)
-4. Leave the lights by the door or in the garage; the customer doesn't need to be home
+1. Text your address and a photo of the front of the house to {PHONE_DISPLAY}, or use the quote form
+2. Say which kit you have, or ask for one to be picked up
+3. Get a fixed price, usually within a day
+4. Pick a date (same-day often available)
 
 ## FAQ
 

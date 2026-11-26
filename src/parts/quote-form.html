@@ -37,30 +37,21 @@
             </select>
           </div>
           <div class="field">
-            <label for="estimate">Your house and extras <small>(optional)</small></label>
-            <textarea id="estimate" name="estimate" rows="3" aria-describedby="estimate-hint" placeholder="e.g. Bungalow, attached garage, 2 bushes"></textarea>
-            <p class="field-hint" id="estimate-hint">Filled in for you when you use the estimator above.</p>
-          </div>
-          <div class="field">
-            <label for="service">What do you need?</label>
-            <select id="service" name="service">
-              <option value="Christmas light hanging">Christmas light hanging</option>
-              <option value="Permanent lights (Govee or similar)">Permanent lights (Govee or similar)</option>
-            </select>
+            <label for="estimate">Your house <small>(optional)</small></label>
+            <textarea id="estimate" name="estimate" rows="2" placeholder="e.g. Bungalow with an attached garage"></textarea>
           </div>
           <label class="calc-check same-day-check"><input type="checkbox" name="sameday" id="sameday"> I'd like a same-day appointment if possible</label>
           <fieldset class="field">
-            <legend>Do you have your own lights?</legend>
+            <legend>Do you have a permanent light kit?</legend>
             <div class="checks">
-              <label><input type="radio" name="lights" value="Yes, I have my own lights" checked> Yes, I have lights</label>
-              <label><input type="radio" name="lights" value="I need some lights brought"> I need some</label>
-              <label><input type="radio" name="lights" value="I need all the lights brought"> I need all of them</label>
-              <label><input type="radio" name="lights" value="Not sure if I have enough lights"> Not sure</label>
+              <label><input type="radio" name="lights" value="I have my own kit (Govee or similar)" checked> Yes, I have a kit</label>
+              <label><input type="radio" name="lights" value="Please pick up a Govee kit from Costco for me"> Please pick one up</label>
+              <label><input type="radio" name="lights" value="Not sure which kit I need"> Not sure which kit</label>
             </div>
           </fieldset>
           <div class="field">
             <label for="notes">Anything else? <small>(optional)</small></label>
-            <textarea id="notes" name="notes" rows="3" placeholder="Roughly how many strands you have, preferred date, etc."></textarea>
+            <textarea id="notes" name="notes" rows="3" placeholder="Which kit you have, preferred date, etc."></textarea>
           </div>
           <p class="sr-only" id="form-status" role="alert"></p>
           <button class="btn btn-primary btn-block btn-lg" type="submit">Text me my quote request</button>

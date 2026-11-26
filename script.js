@@ -150,7 +150,7 @@
     const estimate = form.estimate.value.trim();
     const notes = form.notes.value.trim();
     lastMsg =
-      "Hi Karan, I'd like a quote for: " + (form.service ? form.service.value : "Christmas light hanging") + "\n" +
+      "Hi Karan, I'd like a quote for: " + (form.service ? form.service.value : "permanent Christmas light installation") + "\n" +
       "Name: " + form.name.value.trim() + "\n" +
       "Address: " + form.address.value.trim() + ", " + form.area.value + "\n" +
       (form.area.value === "Hampton" ? "Hampton-area travel fee: $25\n" : "") +
