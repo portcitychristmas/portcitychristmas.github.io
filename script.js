@@ -123,6 +123,7 @@
   if (params.get("est")) form.estimate.value = params.get("est").slice(0, 300);
   const area = params.get("area");
   if (area && [...form.area.options].some(o => o.value === area)) form.area.value = area;
+  if (params.get("service") === "permanent" && form.service) form.service.selectedIndex = 1;
 
   function check(input) {
     const ok = input.value.trim() !== "";
@@ -149,7 +150,7 @@
     const estimate = form.estimate.value.trim();
     const notes = form.notes.value.trim();
     lastMsg =
-      "Hi Karan, I'd like to book Christmas light hanging.\n" +
+      "Hi Karan, I'd like a quote for: " + (form.service ? form.service.value : "Christmas light hanging") + "\n" +
       "Name: " + form.name.value.trim() + "\n" +
       "Address: " + form.address.value.trim() + ", " + form.area.value + "\n" +
       (estimate ? "House: " + estimate + "\n" : "") +

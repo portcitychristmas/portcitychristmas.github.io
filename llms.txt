@@ -20,6 +20,7 @@ Last updated: November 2026
 - Neat, secure install: regular strands go up with clips made for gutters and shingles; permanent lights (like Govee) are fastened with small nails or screws, and the customer is shown where first
 - Runs cords neatly to the outlet and sets up the customer's timer
 - Can supply lights if the customer has none or not enough; these are priced separately and the customer keeps them
+- Also installs Govee and similar permanent outdoor lights (customer's own kit or supplied), custom quote from a photo
 - Hanging season runs from early November into December
 
 ## Pricing (CAD)
@@ -67,6 +68,9 @@ Hanging runs from early November into December, 7 days a week from 8am to 8pm. S
 ### Which areas do you cover?
 Saint John, Rothesay, Quispamsis, Hampton and Grand Bay-Westfield, plus nearby communities like Lakeside, Smithtown, Nauwigewauk and Norton. Just outside these areas? Text me and I can often make it work.
 
+### Do you install Govee permanent lights?
+Yes. I install Govee and similar permanent outdoor lights along your roofline. Buy the kit yourself or I can supply it, and every install gets a custom quote from a photo. See the permanent lights page for details.
+
 ### What if some of my lights don't work?
 I test every strand before it goes up. If one is dead, I'll let you know before I start. I can bring a replacement, or we leave that section out. Your call.
 
@@ -95,5 +99,6 @@ They rent you their lights for the season and charge for them every year. I hang
   - [Quispamsis](https://portcitychristmas.github.io/service-areas/quispamsis/)
   - [Hampton](https://portcitychristmas.github.io/service-areas/hampton/)
   - [Grand Bay-Westfield](https://portcitychristmas.github.io/service-areas/grand-bay-westfield/)
+- [Govee and similar permanent light installation (custom quote)](https://portcitychristmas.github.io/permanent-lights/)
 - [FAQ](https://portcitychristmas.github.io/faq/)
 - [Free quote: quote form, phone and text](https://portcitychristmas.github.io/quote/)
